@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao' // apply plugin
+
+android {
+    signingConfigs {
+        DebugKey {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file('/Users/vigneashsundar/.android/debug.keystore')
+            storePassword 'android'
+        }
+    }
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.vigneashsundar.slnotes"
+        minSdkVersion 15
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.DebugKey
+        }
+        debug {
+            signingConfig signingConfigs.DebugKey
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation 'com.google.android.gms:play-services-drive:15.0.0'
+    implementation 'com.google.android.gms:play-services-auth:15.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.github.clans:fab:1.6.4'
+    implementation 'org.greenrobot:greendao:3.2.2'
+    compile 'jp.wasabeef:richeditor-android:1.2.2'
+
+}
